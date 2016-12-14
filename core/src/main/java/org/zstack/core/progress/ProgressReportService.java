@@ -153,7 +153,7 @@ public class ProgressReportService extends AbstractService implements Management
         q.add(ProgressVO_.resourceUuid, SimpleQuery.Op.EQ, cmd.getResourceUuid());
         if (q.isExists()) {
             assert q.list().size() == 1;
-            ProgressVO vo = q.findTuple().get(0, ProgressVO.class);
+            ProgressVO vo = q.find();
             vo.setProgress(cmd.getProgress());
             dbf.updateAndRefresh(vo);
         } else {
